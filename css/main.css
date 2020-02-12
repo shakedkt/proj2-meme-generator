@@ -1,11 +1,48 @@
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: lato, serif;
+  color: #626262;
+}
+
+body {
+  font-size: 0.875rem;
+  margin: 0;
+}
+
 .Nav-bar-bg {
-    width: 1200px;
-    height: 66px;
-    background-color: #ff7f00;
-  }
+  width: 1200px;
+  height: 66px;
+  background-color: #ff7f00;
+}
 
 .Layer-2 {
-    width: 133px;
-    height: 22px;
-    color: white;
-  }
+  width: 133px;
+  height: 22px;
+  color: white;
+}
+
+.hide {
+  display: none;
+}
+
+.grid {
+  display: grid;
+}
+
+.image-wrapper {
+  display: grid;
+  height: 278px;
+  width: 353px;
+}
+
+.images {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr; 
+  grid-gap: 10px;
+}
+
+
