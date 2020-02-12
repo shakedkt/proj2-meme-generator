@@ -11,14 +11,16 @@
 
 <body onload="onInit()">
     <div class="Nav-bar-bg">
-        <div class="Layer-2">memgasem</div>
+        <h1 class="Layer-2">memgasem</h1>
     </div>
 
-    <div class="images grid">
-        <img class="images-wrapper" src="meme-imgs (square)/1.jpg" alt="" onclick="imageClicked()">
-        <img class="images-wrapper" src="meme-imgs (square)/2.jpg" alt="" >
-        <img class="images-wrapper" src="meme-imgs (square)/3.jpg" alt="">
-</div>
+    <div class="images-galery grid ">
+        <div class="images hide">
+            <img class="images-wrapper" src="meme-imgs (square)/1.jpg" alt="" id="1" onclick="imageClicked(this)">
+            <img class="images-wrapper" src="meme-imgs (square)/2.jpg" alt="" id="2">
+            <img class="images-wrapper" src="meme-imgs (square)/3.jpg" alt="" id="3">
+        </div>
+    </div>
 
     <div class="canvas-container">
         <div class="meme text">

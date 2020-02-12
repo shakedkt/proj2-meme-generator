@@ -24,19 +24,25 @@ function onSaveText() {
 }
 
 function drawText() {
-var meme = loadFromStorage('meme')
-var memeText = meme.lines
-    //gCtx.lineWidth = 
-    //gCtx.strokeStyle = 'red'
+    var meme = loadFromStorage('meme')
+    var memeText = meme.lines
     gCtx.fillStyle = `${memeText.color}`
-   gCtx.font = `${memeText.size}px Ariel`
+    gCtx.font = `${memeText.size}px Ariel`
     gCtx.textAlign = `${memeText.align}`
-   gCtx.fillText(memeText.txt, 10, 10)
+    gCtx.fillText(memeText.txt, 10, 10)
 }
 
 function clearCanvas() {
-   gCtx.clearRect(0, 0, gCanvas.width, gCanvas.height)
-   gCanvas = document.getElementById('my-canvas')
-   gCtx = gCanvas.getContext('2d')
-   drawImg(getImg(2))
+    gCtx.clearRect(0, 0, gCanvas.width, gCanvas.height)
+    gCanvas = document.getElementById('my-canvas')
+    gCtx = gCanvas.getContext('2d')
+}
+
+function draw() {
+    drawImg(proj)
+}
+
+function imageClicked (Image) {
+var gallery = document.querySelector('.images')
+gallery.style.display = 'none'
 }
