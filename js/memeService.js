@@ -6,14 +6,10 @@ var gImgs = createImages()
 
 //var gMemes = createMeme(text)
 
-function makeMeme(text) {
-    createMeme(text)
-}
+    //createMeme(text, image)
 
 function createMeme(text) {
-    debugger
     var meme = {
-        selectedImgId: gImgs.id,
         selectedLineIdx: 0,
         lines: { txt: text, size: 20, align: 'left', color: 'red' }
     }
