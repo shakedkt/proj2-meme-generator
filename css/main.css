@@ -24,13 +24,12 @@ body {
   color: white;
 }
 
-.hide {
-  display: none;
-}
 
 .grid {
   display: grid;
+
 }
+
 
 .image-wrapper {
   display: grid;
@@ -38,11 +37,35 @@ body {
   width: 353px;
 }
 
+.home-page {
+  cursor: pointer;
+}
+
 .images {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr; 
-  grid-gap: 10px;
+  grid-gap: 1px;
+}
+
+.hide {
+  display: none;
+}
+
+.font-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  background-color: var(--white);
+  overflow:hidden 
 }
 
 
+button {
+  width: 26px;
+  height: 18px;
+}
+
+img {
+    max-width:100%;
+}

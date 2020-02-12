@@ -3,6 +3,7 @@
 var gCanvas;
 var gCtx;
 var gFirsTime = true
+var gCurrImg = ''
 
 function onInit() {
     gCanvas = document.getElementById('my-canvas')
@@ -10,7 +11,6 @@ function onInit() {
 }
 
 function drawImg(image) {
-    debugger
     var img = new Image()
     img.src = image.url
     img.onload = () => {
@@ -26,7 +26,7 @@ function drawImg(image) {
 function onSaveText() {
     var text = document.querySelector('.memeTxt').value
     createMeme(text)
-    drawImg(getImg(2))
+    drawImg(getImg(gCurrImg.id))
 }
 
 function drawText() {
@@ -40,14 +40,28 @@ function drawText() {
 
 function imageClicked(Image) {
     var gallery = document.querySelector('.images')
-    gallery.style.display = 'none'
+    //gallery.style.display = 'none'
+gallery.classList.toggle('hide');
+
+
+    var canvas = document.querySelector('.canvas-container')
+    canvas.classList.toggle('hide');
+
     var meme = loadFromStorage('meme')
+    gCurrImg = Image
 
     if (!meme) {
-        debugger
         drawImg(getImg(Image.id))
     } else {
-        debugger
         drawImg(getImg(Image.id))
-        }
+    }
+}
+
+function goToHomePage() {
+    var gallery = document.querySelector('.images')
+    //gallery.style.display = 'none'
+    gallery.classList.toggle('hide');
+
+    var canvas = document.querySelector('.canvas-container')
+    canvas.classList.toggle('hide');
 }

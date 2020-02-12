@@ -12,21 +12,30 @@
 <body onload="onInit()">
     <div class="Nav-bar-bg">
         <h1 class="Layer-2">memgasem</h1>
+        <h3 class="home-page" onclick="goToHomePage()">home</h3>
     </div>
 
     <div class="images-galery grid ">
-        <div class="images hide">
+        <div class="images">
             <img class="images-wrapper" src="meme-imgs (square)/1.jpg" alt="" id="1" onclick="imageClicked(this)">
             <img class="images-wrapper" src="meme-imgs (square)/2.jpg" alt="" id="2" onclick="imageClicked(this)">
             <img class="images-wrapper" src="meme-imgs (square)/3.jpg" alt="" id="3" onclick="imageClicked(this)">
         </div>
     </div>
 
-    <div class="canvas-container">
+    <div class="canvas-container hide">
         <div class="meme text">
             <label for="exampleFormControlInput1">Enter text</label>
             <input type="text" class="memeTxt" id="memeTxt" placeholder="please enter some text" oninput="onSaveText()">
         </div>
+<button class="font-btn">
+    <img src="ICONS/increase font - icon.png" alt="">
+</button> 
+
+<button class="font-btn">
+    <img src="ICONS/decrease font - icon.png" alt="">
+</button> 
+
 
         <canvas id="my-canvas" height="450" width="450" style="border: 1px solid black;">
         </canvas>
