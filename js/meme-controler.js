@@ -6,21 +6,21 @@ var gCtx;
 function onInit() {
     gCanvas = document.getElementById('my-canvas')
     gCtx = gCanvas.getContext('2d')
-    drawImg(getImg(2))
 }
 
-function drawImg(proj) {
+function drawImg(image) {
     var img = new Image()
-    img.src = proj.url
+    img.src = image.url
     img.onload = () => {
         gCtx.drawImage(img, 0, 0, gCanvas.width, gCanvas.height)
+        drawText();
     }
 }
 
 function onSaveText() {
     var text = document.querySelector('.memeTxt').value
     makeMeme(text)
-    drawText()
+    drawImg(getImg(2))
 }
 
 function drawText() {
@@ -32,12 +32,6 @@ function drawText() {
     gCtx.fillText(memeText.txt, 10, 10)
 }
 
-function clearCanvas() {
-    gCtx.clearRect(0, 0, gCanvas.width, gCanvas.height)
-    gCanvas = document.getElementById('my-canvas')
-    gCtx = gCanvas.getContext('2d')
-}
-
 function draw() {
     drawImg(proj)
 }
@@ -45,4 +39,13 @@ function draw() {
 function imageClicked (Image) {
 var gallery = document.querySelector('.images')
 gallery.style.display = 'none'
+var meme = loadFromStorage('meme')
+
+if (!meme) {
+drawImg(getImg(Image.id))
+
+//} else if (image.id === meme.) {
+
+//}
+}
 }
