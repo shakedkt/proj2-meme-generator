@@ -38,7 +38,13 @@ body {
   width: 353px;
 }
 
-
+input {
+  padding: 10px;
+  border-radius: 10px;
+  font-family: Montserrat-Regular;
+  color: rgb(61, 61, 61);
+  width: 100%
+}
 
 .home-page {
   cursor: pointer;
@@ -49,6 +55,18 @@ body {
 .home-page:hover {
   color: black;
 }
+
+.saved-meme {
+  cursor: pointer;
+  padding-right: 16px;
+  padding-left: 16px;
+  border-right: 1px solid black;
+}
+
+.saved-meme:hover {
+  color: black;
+}
+
 
 .about {
   margin-left: 16px;
@@ -76,29 +94,27 @@ body {
 }
 
 .font-btn {
-  width: 40px;
-  height: 40px;
+  width: 60px;
+  height: 60px;
   border-radius: 12px;
   background-color: var(--white);
-  overflow: hidden
+  overflow: hidden;
+  margin: 20px;
+  font-weight: bold;
+  font-family: sans-serif;
 }
 
 .about-me {
   margin-top: 30px;
-  display: grid;
-  grid-template-columns: 1fr 2fr;
-  grid-template-rows: 1fr;
+  display: flex
 }
 
 .about-description {
-  display: inline-grid;
-  grid-row: 1 / 2;
-  grid-column: 2 / 3;
-  justify-items: center;
+  display: flex;
   font-family: Montserrat-Regular;
-  font-size: 2rem;
+  font-size: 1.5rem;
   justify-items: center;
-  align-items: center;
+  flex-direction: column;
 }
 
 button {
@@ -116,10 +132,10 @@ img {
 }
 
 .image-continer {
-  width: 200px;
+  width: 300px;
   border-radius: 40px;
-  grid-row: 1 / 2;
-  grid-column: 1 / 2;
+  padding: 10px;
+
 }
 
 footer {
@@ -136,7 +152,78 @@ footer {
   color: white;
 }
 
+a {
+  text-decoration: none;
+  display: inline-block;
+  color: white;
+  margin: 5px;
+}
+
+p {
+  margin: 2px;
+}
+
+h2 {
+  margin: 15px;
+}
+
+.canvas-container {
+  display: flex;
+  justify-content: space-around;
+}
+
+.meme-text {
+  padding: 10px;
+  display: block;
+}
+
+.text {
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.social-btns {
+  justify-content: center;
+}
+
+.social-btns a {
+  justify-content: center;
+  width: 25px;
+  height: 25px;
+  margin-right: 1rem;
+  border-radius: 5px;
+  background-color: #ff7f00;
+}
+
+
+.fb-btn {
+  margin: 0 auto;
+}
+
+.fb:hover {
+  cursor: pointer;
+  background-color: #949494;
+}
+
+.in-btn {
+  margin: 0 auto;
+}
+
+.in:hover {
+  cursor: pointer;
+  background-color: #949494;
+}
+
+.ball-btn {
+  margin: 0 auto;
+}
+
+.ball:hover {
+  cursor: pointer;
+  background-color: #516fad;
+}
 
 .hide {
   display: none;
 }
+

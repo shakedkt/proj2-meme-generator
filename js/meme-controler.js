@@ -31,7 +31,7 @@ function drawText() {
         gCtx.fillStyle = `${line.color}`
         gCtx.font = `${line.size}px Ariel`
         gCtx.textAlign = `${line.align}`
-        gCtx.fillText(line.txt, line.x, line.y)      
+        gCtx.fillText(line.txt, line.x, line.y)
     });
 }
 
@@ -53,15 +53,17 @@ function imageClicked(Image) {
 
 function goToHomePage() {
     var gallery = document.querySelector('.images')
-    gallery.classList.toggle('hide');
+    if (gallery.className.includes('hide')) {
+        gallery.classList.toggle('hide');
 
-    var aboutMe = document.querySelector('.about-me')
-    aboutMe.classList.toggle('hide')
+        var aboutMe = document.querySelector('.about-me')
+        aboutMe.classList.toggle('hide')
 
-    var canvas = document.querySelector('.canvas-container')
-    canvas.classList.toggle('hide');
+        var canvas = document.querySelector('.canvas-container')
+        canvas.classList.toggle('hide');
 
-    resetMeme()
+        resetMeme()
+    }
 }
 
 function changeFont(direction) {
@@ -82,9 +84,7 @@ function upBtn() {
 
 function downBtn() {
     var meme = getMeme()
-
     getCurrLine().y += 10
-
     drawImg(getImg(meme.selectedImgId))
 }
 
@@ -98,6 +98,21 @@ function switchLine() {
 }
 
 function onFocus(line) {
-if (getCurrLine().txt !== "") return
-else line.value = ''
+    if (getCurrLine().txt !== "") return
+    else line.value = ''
+}
+
+function goToAbout() {
+    window.location.replace('#social');
+
+}
+
+function onSaveMeme() {
+    saveMeme()
+    openModal()
+}
+
+
+function goToSaveSection() {
+
 }

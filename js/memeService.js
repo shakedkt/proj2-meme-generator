@@ -2,14 +2,16 @@
 
 var gImgs = createImages()
 var gMeme = createMeme('');
+var gMemeSavedCount = 0
+
 
 function createMeme(text, size) {
     if (!size) size = 20
     var meme = {
         selectedImgId: 2,
         selectedLineIdx: 0,
-        lines: [{ txt: text, size: size, align: 'left', color: 'red', x: 60, y: 50 },
-        { txt: text, size: size, align: 'left', color: 'blue', x: 60, y: 350 }
+        lines: [{ txt: text, size: size, align: 'left', color: 'black', x: 60, y: 50 },
+        { txt: text, size: size, align: 'left', color: 'black', x: 60, y: 350 }
         ]
     }
     return meme
@@ -52,4 +54,8 @@ function getCurrLine() {
 
 function resetMeme() {
     getCurrLine().txt = ''
+}
+
+function saveMeme() {
+    saveToStorage(`meme-${gMemeSavedCount++}`, gMeme)
 }
