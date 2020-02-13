@@ -243,3 +243,7 @@ margin-top: 30px;
 .btn-invisible {
   display: none;
 }
+
+.download {
+  background-image: url("ICONS/download.png");
+}

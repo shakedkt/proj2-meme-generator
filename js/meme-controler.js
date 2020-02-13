@@ -70,7 +70,7 @@ function goToHomePage() {
 
         resetMeme()
     }
-    document.querySelector('.memeTxt').placeholder = ''
+    document.querySelector('.memeTxt').input = ''
 }
 
 function changeFont(direction) {
@@ -154,8 +154,19 @@ function openColorPicker() {
         );
 }
 
+function downloadCanvas(elLink) {
+    var data = gCanvas.toDataURL()
+    elLink.href = data
+    elLink.download = 'jpg'
+    }
 
-
+    function openColorPicker() {
+        document.querySelector('span.opener')
+            .addEventListener('click',
+                e => document.querySelector('.btn-invisible').click()
+            );
+    }
+    
 
 
 
