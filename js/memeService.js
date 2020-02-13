@@ -9,7 +9,7 @@ function createMeme(text, size) {
         selectedImgId: 2,
         selectedLineIdx: 0,
         lines: [{ txt: text, size: size, align: 'left', color: 'red', x: 60, y: 50 },
-        { txt: text, size: size, align: 'left', color: 'blue', x: 60, y: 50 }
+        { txt: text, size: size, align: 'left', color: 'blue', x: 60, y: 350 }
         ]
     }
     return meme
@@ -48,4 +48,8 @@ function getCurrLine() {
     var meme = getMeme()
     var currLine = meme.lines[meme.selectedLineIdx]
     return currLine
+}
+
+function resetMeme() {
+    getCurrLine().txt = ''
 }

@@ -11,8 +11,11 @@
 
 <body onload="onInit()">
     <div class="Nav-bar-bg">
-        <h1 class="Layer-2">memgasem</h1>
-        <h3 class="home-page" onclick="goToHomePage()">home</h3>
+        <img class="header" src="ICONS/94BE5D4E-1A38-4B0E-AA60-FA268DB0B302.png" alt="">
+        <div class="left-side">
+            <h3 class="home-page" onclick="goToHomePage()">Gallery</h3>
+            <h3 class="about" onclick="goToHomePage()">about</h3>
+        </div>
     </div>
 
     <div class="images-galery grid ">
@@ -40,8 +43,6 @@
     </div>
 
     <div class="canvas-container hide">
-
-
         <canvas id="my-canvas" height="450" width="450" style="border: 1px solid black;">
         </canvas>
 
@@ -59,7 +60,15 @@
         </button>
 
         <button class="font-btn">
-            <img src="ICONS/up-and-down-opposite-double-arrows-side-by-side.png" onclick="upOrDown()">
+            <img src="ICONS\up.png" onclick="upBtn()">
+        </button>
+
+        <button class="font-btn">
+            <img src="ICONS/noun_down button_1494819.png" onclick="downBtn()">
+        </button>
+
+        <button class="font-btn">
+            <img src="ICONS/up-and-down-opposite-double-arrows-side-by-side.png" onclick="switchLine()">
         </button>
 
     </div>

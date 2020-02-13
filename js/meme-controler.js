@@ -53,6 +53,8 @@ function goToHomePage() {
 
     var canvas = document.querySelector('.canvas-container')
     canvas.classList.toggle('hide');
+
+    resetMeme()
 }
 
 function changeFont(direction) {
@@ -65,10 +67,25 @@ function changeFont(direction) {
     drawImg(getImg(meme.selectedImgId))
 }
 
-function upOrDown() {
+function upBtn() {
+    var meme = getMeme()
+    getCurrLine().y -= 10
+    drawImg(getImg(meme.selectedImgId))
+}
+
+function downBtn() {
     var meme = getMeme()
 
     getCurrLine().y += 10
 
     drawImg(getImg(meme.selectedImgId))
+}
+
+function switchLine() {
+    var meme = getMeme()
+    if (meme.selectedLineIdx === 1) {
+        meme.selectedLineIdx = 0
+    } else {
+        meme.selectedLineIdx = 1
+    }
 }
