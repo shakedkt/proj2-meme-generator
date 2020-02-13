@@ -28,8 +28,10 @@ function drawText() {
     var meme = getMeme()
 
     meme.lines.forEach(line => {
-        gCtx.fillStyle = `${line.color}`
         gCtx.font = `${line.size}px impact`
+        gCtx.strokeStyle = 'black';
+        gCtx.strokeText(line.txt, line.x, line.y)
+        gCtx.fillStyle = `${line.color}`
         gCtx.textAlign = `${line.align}`
         gCtx.fillText(line.txt, line.x, line.y)
     });
@@ -68,6 +70,7 @@ function goToHomePage() {
 
         resetMeme()
     }
+    document.querySelector('.memeTxt').placeholder = ''
 }
 
 function changeFont(direction) {

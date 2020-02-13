@@ -10,8 +10,8 @@ function createMeme(text, size) {
     var meme = {
         selectedImgId: 2,
         selectedLineIdx: 0,
-        lines: [{ txt: text, size: size, align: 'left', color: 'black', x: 60, y: 50 },
-        { txt: text, size: size, align: 'left', color: 'black', x: 60, y: 350 }
+        lines: [{ txt: text, size: size, align: 'left', color: 'white', x: 60, y: 50 },
+        { txt: text, size: size, align: 'left', color: 'white', x: 60, y: 350 }
         ]
     }
     return meme
