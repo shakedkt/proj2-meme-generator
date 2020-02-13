@@ -2,8 +2,6 @@
 
 var gCanvas;
 var gCtx;
-var gFirsTime = true
-var gCurrImg = ''
 
 function onInit() {
     gCanvas = document.getElementById('my-canvas')
@@ -15,46 +13,37 @@ function drawImg(image) {
     img.src = image.url
     img.onload = () => {
         gCtx.drawImage(img, 0, 0, gCanvas.width, gCanvas.height)
-        if (!gFirsTime) {
-            drawText();
-        } else {
-            gFirsTime = false
-        }
+        drawText();
     }
 }
 
 function onSaveText() {
     var text = document.querySelector('.memeTxt').value
-    createMeme(text)
-    drawImg(getImg(gCurrImg.id))
+    var meme = getMeme()
+    setMemeText(text)
+    drawImg(getImg(meme.selectedImgId))
 }
 
 function drawText() {
-    var meme = loadFromStorage('meme')
-    var memeText = meme.lines
+    var meme = getMeme()
+    var memeText = meme.lines[meme.selectedLineIdx]
     gCtx.fillStyle = `${memeText.color}`
     gCtx.font = `${memeText.size}px Ariel`
     gCtx.textAlign = `${memeText.align}`
-    gCtx.fillText(memeText.txt, 10, 10)
+    gCtx.fillText(memeText.txt, getCurrLine().x, getCurrLine().y)
 }
 
 function imageClicked(Image) {
     var gallery = document.querySelector('.images')
-    //gallery.style.display = 'none'
-gallery.classList.toggle('hide');
-
+    gallery.classList.toggle('hide');
 
     var canvas = document.querySelector('.canvas-container')
     canvas.classList.toggle('hide');
 
-    var meme = loadFromStorage('meme')
-    gCurrImg = Image
+    var meme = getMeme()
+    meme.selectedImgId = Image.id
 
-    if (!meme) {
-        drawImg(getImg(Image.id))
-    } else {
-        drawImg(getImg(Image.id))
-    }
+    drawImg(getImg(Image.id))
 }
 
 function goToHomePage() {
@@ -64,4 +53,22 @@ function goToHomePage() {
 
     var canvas = document.querySelector('.canvas-container')
     canvas.classList.toggle('hide');
+}
+
+function changeFont(direction) {
+    var meme = getMeme()
+    var currLine = meme.lines[meme.selectedLineIdx]
+
+    if (direction === 'increase') currLine.size += 10
+    else currLine.size -= 10
+
+    drawImg(getImg(meme.selectedImgId))
+}
+
+function upOrDown() {
+    var meme = getMeme()
+
+    getCurrLine().y += 10
+
+    drawImg(getImg(meme.selectedImgId))
 }

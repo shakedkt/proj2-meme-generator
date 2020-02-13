@@ -1,26 +1,28 @@
 'use strict'
 
-var gID = 1
 var gImgs = createImages()
+var gMeme = createMeme('');
 
-
-//var gMemes = createMeme(text)
-
-    //createMeme(text, image)
-
-function createMeme(text) {
+function createMeme(text, size) {
+    if (!size) size = 20
     var meme = {
+        selectedImgId: 2,
         selectedLineIdx: 0,
-        lines: { txt: text, size: 20, align: 'left', color: 'red' }
+        lines: [{ txt: text, size: size, align: 'left', color: 'red', x: 60, y: 50 },
+        { txt: text, size: size, align: 'left', color: 'blue', x: 60, y: 50 }
+        ]
     }
-    saveToStorage('meme', meme)
     return meme
+}
+
+function setMemeText(text) {
+    gMeme.lines[gMeme.selectedLineIdx].txt = text
 }
 
 function createImages() {
     var images = []
-    while (images.length <= 18) {
-        images.push(createImage())
+    for (var i = 0; i < 18; i++) {
+        images.push(createImage(i))
     }
     return images
 }
@@ -29,20 +31,21 @@ function getMeme() {
     return gMeme
 }
 
-function getImgs() {
-    return gImgs
-}
-
 function getImg(id) {
     return gImgs.find(image => image.id === parseInt(id))
 }
 
-function createImage() {
+function createImage(id) {
     var image = {
-        id: gID,
-        url: `meme-imgs (square)/${gID++}.jpg`,
+        id,
+        url: `meme-imgs (square)/${id}.jpg`,
         keywords: ['president']
     }
     return image
 }
 
+function getCurrLine() {
+    var meme = getMeme()
+    var currLine = meme.lines[meme.selectedLineIdx]
+    return currLine
+}
