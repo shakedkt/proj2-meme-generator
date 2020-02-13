@@ -29,7 +29,7 @@ function drawText() {
 
     meme.lines.forEach(line => {
         gCtx.fillStyle = `${line.color}`
-        gCtx.font = `${line.size}px ${impactFont}`
+        gCtx.font = `${line.size}px impact`
         gCtx.textAlign = `${line.align}`
         gCtx.fillText(line.txt, line.x, line.y)
     });
