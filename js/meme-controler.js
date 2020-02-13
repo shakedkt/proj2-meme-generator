@@ -29,7 +29,7 @@ function drawText() {
 
     meme.lines.forEach(line => {
         gCtx.fillStyle = `${line.color}`
-        gCtx.font = `${line.size}px Ariel`
+        gCtx.font = `${line.size}px ${impactFont}`
         gCtx.textAlign = `${line.align}`
         gCtx.fillText(line.txt, line.x, line.y)
     });
@@ -37,14 +37,18 @@ function drawText() {
 
 function imageClicked(Image) {
     var gallery = document.querySelector('.images')
-    gallery.classList.toggle('hide');
-
+    if (!gallery.className.includes('hide')) {
+        gallery.classList.toggle('hide');
+    }
     var canvas = document.querySelector('.canvas-container')
-    canvas.classList.toggle('hide');
+    if (canvas.className.includes('hide')) {
+        canvas.classList.toggle('hide');
+    }
 
     var aboutMe = document.querySelector('.about-me')
-    aboutMe.classList.toggle('hide')
-
+    if (!aboutMe.className.includes('hide')) {
+        aboutMe.classList.toggle('hide')
+    }
     var meme = getMeme()
     meme.selectedImgId = Image.id
 
@@ -104,7 +108,6 @@ function onFocus(line) {
 
 function goToAbout() {
     window.location.replace('#social');
-
 }
 
 function onSaveMeme() {
@@ -112,7 +115,44 @@ function onSaveMeme() {
     openModal()
 }
 
+function openModal() {
+    var modal = document.querySelector('.modal')
+    modal.classList.toggle('hide');
+
+    setTimeout(function () {
+        modal.classList.toggle('hide');
+    }, 3000);
+}
+
 
 function goToSaveSection() {
+    var canvas = document.querySelector('.canvas-container')
+    if (!canvas.className.includes('hide')) {
+        canvas.classList.toggle('hide')
+    }
+    var images = document.querySelector('.images')
+    if (!images.className.includes('hide')) {
+        images.classList.toggle('hide');
+    }
 
 }
+
+function changeColor() {
+    var textColor = document.querySelector('.btn-invisible').value
+    var meme = getMeme()
+    getCurrLine().color = textColor
+    drawImg(getImg(meme.selectedImgId))
+}
+
+function openColorPicker() {
+    document.querySelector('span.opener')
+        .addEventListener('click',
+            e => document.querySelector('.btn-invisible').click()
+        );
+}
+
+
+
+
+
+

@@ -11,7 +11,7 @@
 
 <body onload="onInit()">
     <div class="Nav-bar-bg">
-        <img class="header" src="ICONS/94BE5D4E-1A38-4B0E-AA60-FA268DB0B302.png"  onclick="goToHomePage()">
+        <img class="header" src="ICONS/94BE5D4E-1A38-4B0E-AA60-FA268DB0B302.png" onclick="goToHomePage()">
         <div class="left-side">
             <h3 class="home-page" onclick="goToHomePage()">Gallery</h3>
             <h3 class="saved-meme" onclick="goToSaveSection()">Saved Memes</h3>
@@ -47,16 +47,16 @@
         <div class="image-continer">
             <img class="personal-pic" src="images/4.jpg" alt="">
         </div>
-        <div class="about-description">
+        <div class="about-description flex">
             <h2>Shaked Katsir</h2>
             <p>
                 Hello! my name is shaked this is my meme maker,I'm 21 years old
                 from TLV. <br>
                 I like coding very much, JS & CSS & HTML</p>
 
-            <div class="social-btns flex">
-                <a class="fb btn flex items-center" id="social" href=""><img src="ICONS/facebook-logo.png" alt=""> </a>
-                <a class="in btn flex items-center" href=""><img src="ICONS/linkedin-logo.png" alt=""> </a>
+            <div class="social-btns">
+                <a class="fb social-btn" id="social" href=""><img src="ICONS/facebook-logo.png" alt=""> </a>
+                <a class="in social-btn"><img src="ICONS/linkedin-logo.png" alt=""> </a>
             </div>
         </div>
     </section>
@@ -65,37 +65,52 @@
         <canvas id="my-canvas" height="450" width="450" style="border: 1px solid black;">
         </canvas>
 
-        <div class="controler">
+        <div class="controler flex">
             <div class="meme-text">
                 <input type="text" class="memeTxt" id="memeTxt" placeholder="please enter some text"
                     oninput="onSaveText()" onfocus=onFocus(this)>
             </div>
-            <button class="font-btn">
-                <img src="ICONS/increase font - icon.png" alt="" onclick="changeFont('increase')">
-            </button>
 
-            <button class="font-btn">
-                <img src="ICONS/decrease font - icon.png" alt="" onclick="changeFont('decrease')">
-            </button>
+            <div class="controler-buttons">
+                <button class="font-btn">
+                    <img src="ICONS/increase font - icon.png" alt="" onclick="changeFont('increase')">
+                </button>
 
-            <button class="font-btn">
-                <img src="ICONS\up.png" onclick="upBtn()">
-            </button>
+                <button class="font-btn">
+                    <img src="ICONS/decrease font - icon.png" alt="" onclick="changeFont('decrease')">
+                </button>
 
-            <button class="font-btn">
-                <img src="ICONS/downbtn.png" onclick="downBtn()">
-            </button>
+                <button class="font-btn">
+                    <img src="ICONS\up.png" onclick="upBtn()">
+                </button>
 
-            <button class="font-btn">
-                <img src="ICONS/up-and-down-opposite-double-arrows-side-by-side.png" onclick="switchLine()">
-            </button>
+                <button class="font-btn">
+                    <img src="ICONS/downbtn.png" onclick="downBtn()">
+                </button>
 
-            <button class="font-btn">
-                <img src="ICONS/add.png" onclick="onSaveMeme()">
-            </button>
+                <button class="font-btn">
+                    <img src="ICONS/up-and-down-opposite-double-arrows-side-by-side.png" onclick="switchLine()">
+                </button>
 
+                <button class="font-btn">
+                    <img src="ICONS/text stroke.png" onclick="onChangeFont()">
+                </button>
+
+                <span class="opener" onclick="openColorPicker()">
+                    <button class="font-btn">
+                        <img class="textColor" src="ICONS/paint-board-and-brush.png">
+                    </button>
+                </span>
+                <input type="color" class="btn-invisible textColor" onchange="changeColor()"/>
+
+                <button class="font-btn">
+                    <img src="ICONS/download.png" onclick="onSaveMeme()">
+                </button>
+
+
+            </div>
             <div class="modal hide">
-                
+                meme saved
             </div>
 
         </div>

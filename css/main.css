@@ -12,6 +12,12 @@ body {
   margin: 0;
 }
 
+@font-face {
+  font-family: Impact;
+  src: url(../fonts/impact/impact.ttf);
+}
+
+
 .Nav-bar-bg {
   height: 66px;
   display: flex;
@@ -21,6 +27,9 @@ body {
   padding: 57px;
 }
 
+.controler {
+  flex-direction: column;
+}
 
 .header {
   width: 133px;
@@ -110,11 +119,10 @@ input {
 }
 
 .about-description {
-  display: flex;
   font-family: Montserrat-Regular;
   font-size: 1.5rem;
-  justify-items: center;
   flex-direction: column;
+  justify-content: center;
 }
 
 button {
@@ -135,7 +143,6 @@ img {
   width: 300px;
   border-radius: 40px;
   padding: 10px;
-
 }
 
 footer {
@@ -183,21 +190,16 @@ h2 {
 }
 
 .social-btns {
-  justify-content: center;
+margin-top: 30px;
 }
 
-.social-btns a {
+.social-btn {
   justify-content: center;
-  width: 25px;
-  height: 25px;
-  margin-right: 1rem;
+  width: 30px;
+  height: 30px;
+  padding: 5px;
   border-radius: 5px;
   background-color: #ff7f00;
-}
-
-
-.fb-btn {
-  margin: 0 auto;
 }
 
 .fb:hover {
@@ -205,25 +207,40 @@ h2 {
   background-color: #949494;
 }
 
-.in-btn {
-  margin: 0 auto;
-}
-
 .in:hover {
   cursor: pointer;
   background-color: #949494;
 }
 
-.ball-btn {
-  margin: 0 auto;
+.modal {
+  opacity: 1;
+  width: 20%;
+  height: 10%; 
+  background-color: #ff7f00;
+  color: white;
+  border-radius: 10px;
+  border: 1px solid black;
+  align-self: flex-end;
+  text-align: center;	
+  vertical-align: middle;
+  line-height: 40px;
+  transition: opacity .30s ease-in-out;
 }
 
-.ball:hover {
-  cursor: pointer;
-  background-color: #516fad;
+.flex {
+  display: flex;
 }
 
 .hide {
   display: none;
+  opacity: 0;
 }
+/*
+#myColor {
+  opacity: 0;
+}
+*/
 
+.btn-invisible {
+  display: none;
+}
