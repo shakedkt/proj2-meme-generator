@@ -75,10 +75,6 @@ body {
   gap: 15px;
 }
 
-.hide {
-  display: none;
-}
-
 .font-btn {
   width: 40px;
   height: 40px;
@@ -90,7 +86,7 @@ body {
 .about-me {
   margin-top: 30px;
   display: grid;
-  grid-template-columns:1fr 2fr;
+  grid-template-columns: 1fr 2fr;
   grid-template-rows: 1fr;
 }
 
@@ -124,4 +120,23 @@ img {
   border-radius: 40px;
   grid-row: 1 / 2;
   grid-column: 1 / 2;
+}
+
+footer {
+  height: 66px;
+  display: flex;
+  align-items: center;
+  background-color: #ff7f00;
+  justify-content: center;
+  flex-direction: column;
+  padding: 57px;
+}
+
+.bottom-paragraph {
+  color: white;
+}
+
+
+.hide {
+  display: none;
 }

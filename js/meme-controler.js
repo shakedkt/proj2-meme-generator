@@ -26,11 +26,13 @@ function onSaveText() {
 
 function drawText() {
     var meme = getMeme()
-    var memeText = meme.lines[meme.selectedLineIdx]
-    gCtx.fillStyle = `${memeText.color}`
-    gCtx.font = `${memeText.size}px Ariel`
-    gCtx.textAlign = `${memeText.align}`
-    gCtx.fillText(memeText.txt, getCurrLine().x, getCurrLine().y)
+
+    meme.lines.forEach(line => {
+        gCtx.fillStyle = `${line.color}`
+        gCtx.font = `${line.size}px Ariel`
+        gCtx.textAlign = `${line.align}`
+        gCtx.fillText(line.txt, line.x, line.y)      
+    });
 }
 
 function imageClicked(Image) {
@@ -40,6 +42,9 @@ function imageClicked(Image) {
     var canvas = document.querySelector('.canvas-container')
     canvas.classList.toggle('hide');
 
+    var aboutMe = document.querySelector('.about-me')
+    aboutMe.classList.toggle('hide')
+
     var meme = getMeme()
     meme.selectedImgId = Image.id
 
@@ -48,8 +53,10 @@ function imageClicked(Image) {
 
 function goToHomePage() {
     var gallery = document.querySelector('.images')
-    //gallery.style.display = 'none'
     gallery.classList.toggle('hide');
+
+    var aboutMe = document.querySelector('.about-me')
+    aboutMe.classList.toggle('hide')
 
     var canvas = document.querySelector('.canvas-container')
     canvas.classList.toggle('hide');
@@ -88,4 +95,9 @@ function switchLine() {
     } else {
         meme.selectedLineIdx = 1
     }
+}
+
+function onFocus(line) {
+if (getCurrLine().txt !== "") return
+else line.value = ''
 }
