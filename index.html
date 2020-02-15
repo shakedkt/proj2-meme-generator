@@ -11,40 +11,16 @@
 
 <body onload="onInit()">
     <div class="Nav-bar-bg">
-        <img class="header" src="ICONS/94BE5D4E-1A38-4B0E-AA60-FA268DB0B302.png" onclick="goToHomePage()">
+        <img class="header" src="ICONS/94BE5D4E-1A38-4B0E-AA60-FA268DB0B302.png" onclick="onHomePage()">
         <div class="left-side">
-            <h3 class="home-page" onclick="goToHomePage()">Gallery</h3>
-            <h3 class="saved-meme" onclick="goToSaveSection()">Saved Memes</h3>
-            <h3 class="about" onclick="goToAbout()">About</h3>
+            <h3 class="home-page" onclick="onHomePage()">Gallery</h3>
+            <h3 class="saved-meme" onclick="onSaveSection()">Saved Memes</h3>
+            <h3 class="about" onclick="onAbout()">About</h3>
         </div>
-        <button class="toggle-menu-btn fa" onclick="toggleMenu()" alt="Open main menu"></button>
-        <div class="toggle-menu-screen screen" onclick="toggleMenu()" alt="toggle main menu"></div>
-</div>
+        <img class="hamburger" src="ICONS/Hamburger_icon.svg.png" onclick="openHamburger()">
+    </div>
 
-
-<nav id="mainMenu" class="main-menu-wrapper">
-    <ul class="main-menu clean-list flex align-center">
-        <li>
-            <a href="#" class="home-page">Journal</a>
-        </li>
-        <li>
-            <a href="#" class="saved-meme" onclick="goToSaveSection()">Saved Memes</a>
-        </li>
-        <li>
-            <a href="#" class="about" onclick="goToAbout()">About</a>
-        </li>
-    </ul>
-    <button class="toggle-menu-btn fa" onclick="toggleMenu()" alt="Open main menu"></button>
-    <div class="toggle-menu-screen screen" onclick="toggleMenu()" alt="toggle main menu"></div>
-</nav>
-
-
-
-
-
-
-
-    <div class="images-galery grid ">
+    <div class="images-galery grid">
         <div class="images">
             <img class="images-wrapper" src="meme-imgs (square)/1.jpg" alt="" id="1" onclick="imageClicked(this)">
             <img class="images-wrapper" src="meme-imgs (square)/2.jpg" alt="" id="2" onclick="imageClicked(this)">
@@ -64,8 +40,10 @@
             <img class="images-wrapper" src="meme-imgs (square)/16.jpg" alt="" id="16" onclick="imageClicked(this)">
             <img class="images-wrapper" src="meme-imgs (square)/17.jpg" alt="" id="17" onclick="imageClicked(this)">
             <img class="images-wrapper" src="meme-imgs (square)/18.jpg" alt="" id="18" onclick="imageClicked(this)">
-
         </div>
+        <div class='saved-section hide'>
+            meep
+                    </div>
     </div>
 
     <section class="about-me">
@@ -137,12 +115,16 @@
                 </button>
 
                 <a href="#" class="download" onclick="downloadCanvas(this)" download="my-img.jpg"></a>
-
+                <div class="share-container"></div>
+                <form action="" method="POST" enctype="multipart/form-data" onsubmit="uploadImg(this, event)">
+                  <input name="img" id="imgData" type="hidden" />
+                  <button class="share" type="submit">Publish</button>
+                  <div class="share-container"></div>
+                </form>
             </div>
             <div class="modal hide">
                 meme saved
             </div>
-
         </div>
     </div>
 
@@ -151,6 +133,7 @@
         <p class="bottom-paragraph">all rights reserved 2019</p>
     </footer>
 
+    <script src="js/upload-service.js"></script>
     <script src="js/storage-service.js"></script>
     <script src="js/meme-controler.js"></script>
     <script src="js/memeService.js"></script>

@@ -210,7 +210,6 @@ h2 {
 }
 
 .modal {
-  opacity: 1;
   width: 20%;
   height: 10%;
   background-color: #ff7f00;
@@ -221,11 +220,20 @@ h2 {
   text-align: center;
   vertical-align: middle;
   line-height: 40px;
-  transition: opacity .30s ease-in-out;
 }
 
-.flex {
-  display: flex;
+.share {
+  width: 20%;
+  height: 10%;
+  background-color: #ff7f00;
+  color: white;
+  border-radius: 10px;
+  border: 1px solid black;
+  align-self: flex-start;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 40px;
+  margin: 10px;
 }
 
 .hide {
@@ -252,45 +260,49 @@ h2 {
   }
 
   .left-side {
-    display: block;
+    display: none;
+    position: fixed;
+    flex-direction: column;
+    background-color: rgb(49, 49, 49);
+    top: 0px;
+    right: 0px;
+    width: 50%;
+    height: 100%;
+    text-align: center;
   }
 
-
-  .open .left-side {
-    visibility: visible;
-    opacity: 1;
+  .home-page {
+    padding: 20px 10px 30px 10px;
+    border-bottom: 1px solid #ff7f00;
+    margin: 10px 0px 0px 0px;
   }
 
+  .saved-meme {
+    padding: 40px 10px 40px 10px;
+    border-bottom: 1px solid #ff7f00;
+    margin: 0px;
+  }
+
+  .about {
+    padding: 30px 10px 0px 10px;
+    margin: 0px;
+  }
 
   .hamburger {
     display: inline-block;
     color: white;
-    width: 50px;
-    height: 50px;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
   }
 }
 
-
-
-@media (max-width: 740px) {
-  .toggle-menu-screen {
-  }
-
-  .images {
-    display: block;
+@media (min-width: 779px) {
+  .hide {
+    opacity: 1;
   }
 }
 
-.open .toggle-menu-screen {
-  visibility: visible;
-  opacity: 1;
-}
-
-.toggle-menu-btn {
-  background: none;
-  border: none;
-  color: #fff;
-  font-size: 1.75rem;
-  padding: 20px;
-  display: none;
+.flex {
+  display: flex;
 }

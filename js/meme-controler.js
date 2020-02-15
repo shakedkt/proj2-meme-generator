@@ -55,9 +55,12 @@ function imageClicked(Image) {
     meme.selectedImgId = Image.id
 
     drawImg(getImg(Image.id))
+
+    var textBox = document.querySelector('.memeTxt')
+    textBox.value = ''
 }
 
-function goToHomePage() {
+function onHomePage() {
     var gallery = document.querySelector('.images')
     if (gallery.className.includes('hide')) {
         gallery.classList.toggle('hide');
@@ -66,8 +69,10 @@ function goToHomePage() {
         aboutMe.classList.toggle('hide')
 
         var canvas = document.querySelector('.canvas-container')
-        canvas.classList.toggle('hide');
+        canvas.classList.add('hide');
 
+        var savedMemes = document.querySelector('.saved-section')
+        savedMemes.classList.add('hide')
         resetMeme()
     }
     document.querySelector('.memeTxt').input = ''
@@ -109,7 +114,7 @@ function onFocus(line) {
     else line.value = ''
 }
 
-function goToAbout() {
+function onAbout() {
     window.location.replace('#social');
 }
 
@@ -128,16 +133,20 @@ function openModal() {
 }
 
 
-function goToSaveSection() {
+function onSaveSection() {
     var canvas = document.querySelector('.canvas-container')
     if (!canvas.className.includes('hide')) {
-        canvas.classList.toggle('hide')
+        canvas.classList.add('hide')
     }
     var images = document.querySelector('.images')
     if (!images.className.includes('hide')) {
-        images.classList.toggle('hide');
+        images.classList.add('hide');
     }
-
+var savedSection = document.querySelector('.saved-section')
+    if(savedSection.className.includes('hide')) {
+        savedSection.classList.toggle('hide')
+    }
+    renderSavedMemes()
 }
 
 function changeColor() {
@@ -162,5 +171,36 @@ function downloadCanvas(elLink) {
     var data = gCanvas.toDataURL()
     elLink.href = data
     elLink.download = 'jpg'
-    }
+}
 
+
+function openHamburger() {
+    var leftSide = document.querySelector('.left-side')
+    leftSide.classList.toggle('flex');
+    document.body.classList.toggle('menu-open');
+    document.body.addEventListener("click", closeMenu, {capture: true});
+}
+
+function closeMenu() {
+    var leftSide = document.querySelector('.left-side')
+    if (document.body.className.includes('menu-open')) {
+        leftSide.classList.toggle('hide');
+        document.body.removeEventListener("click", closeMenu);
+    }
+}
+
+
+function renderSavedMemes() {
+var strHtml = ''
+var memeCount = 0
+
+var memeList = loadFromStorage('meme-0')
+
+
+/*
+<img class="images-wrapper" src="meme-imgs (square)/1.jpg" alt="" id="1" onclick="imageClicked(this)">
+*/
+
+var savedContiner = document.querySelector('.saved-section')
+savedContiner.innerHTML = strHtml
+}
