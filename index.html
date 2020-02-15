@@ -17,7 +17,32 @@
             <h3 class="saved-meme" onclick="goToSaveSection()">Saved Memes</h3>
             <h3 class="about" onclick="goToAbout()">About</h3>
         </div>
-    </div>
+        <button class="toggle-menu-btn fa" onclick="toggleMenu()" alt="Open main menu"></button>
+        <div class="toggle-menu-screen screen" onclick="toggleMenu()" alt="toggle main menu"></div>
+</div>
+
+
+<nav id="mainMenu" class="main-menu-wrapper">
+    <ul class="main-menu clean-list flex align-center">
+        <li>
+            <a href="#" class="home-page">Journal</a>
+        </li>
+        <li>
+            <a href="#" class="saved-meme" onclick="goToSaveSection()">Saved Memes</a>
+        </li>
+        <li>
+            <a href="#" class="about" onclick="goToAbout()">About</a>
+        </li>
+    </ul>
+    <button class="toggle-menu-btn fa" onclick="toggleMenu()" alt="Open main menu"></button>
+    <div class="toggle-menu-screen screen" onclick="toggleMenu()" alt="toggle main menu"></div>
+</nav>
+
+
+
+
+
+
 
     <div class="images-galery grid ">
         <div class="images">
@@ -101,18 +126,17 @@
                         <img class="textColor" src="ICONS/paint-board-and-brush.png">
                     </button>
                 </span>
-                <input type="color" class="btn-invisible textColor" onchange="changeColor()"/>
+                <input type="color" class="btn-invisible textColor" onchange="changeColor()" />
 
                 <button class="font-btn">
                     <img src="ICONS/save.png" onclick="onSaveMeme()">
                 </button>
 
-                <button class="font-btn download"> 
+                <button class="font-btn download-btn">
                     <img src="ICONS/download.png" alt="" onclick="openDownLoad()">
-                    <a href="#" class="download-btn" onclick="downloadCanvas(this)" download="my-img.jpg">do</a>
-
                 </button>
 
+                <a href="#" class="download" onclick="downloadCanvas(this)" download="my-img.jpg"></a>
 
             </div>
             <div class="modal hide">

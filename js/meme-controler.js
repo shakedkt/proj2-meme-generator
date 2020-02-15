@@ -154,19 +154,13 @@ function openColorPicker() {
         );
 }
 
+function openDownLoad() {
+    document.querySelector('.download').click()
+}
+
 function downloadCanvas(elLink) {
     var data = gCanvas.toDataURL()
     elLink.href = data
     elLink.download = 'jpg'
     }
-
-    function openColorPicker() {
-        document.querySelector('span.opener')
-            .addEventListener('click',
-                e => document.querySelector('.btn-invisible').click()
-            );
-    }
-    
-
-
 

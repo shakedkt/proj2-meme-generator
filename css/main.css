@@ -12,11 +12,6 @@ body {
   margin: 0;
 }
 
-@font-face {
-  font-family: Impact;
-  src: url(../fonts/impact/impact.ttf);
-}
-
 .Nav-bar-bg {
   height: 66px;
   display: flex;
@@ -110,6 +105,8 @@ input {
   margin: 20px;
   font-weight: bold;
   font-family: sans-serif;
+  color: white;
+  background-color: white;
 }
 
 .about-me {
@@ -176,6 +173,7 @@ h2 {
 .canvas-container {
   display: flex;
   justify-content: space-around;
+  background-color: #e3e3e3;
 }
 
 .meme-text {
@@ -189,7 +187,7 @@ h2 {
 }
 
 .social-btns {
-margin-top: 30px;
+  margin-top: 30px;
 }
 
 .social-btn {
@@ -214,13 +212,13 @@ margin-top: 30px;
 .modal {
   opacity: 1;
   width: 20%;
-  height: 10%; 
+  height: 10%;
   background-color: #ff7f00;
   color: white;
   border-radius: 10px;
   border: 1px solid black;
   align-self: flex-end;
-  text-align: center;	
+  text-align: center;
   vertical-align: middle;
   line-height: 40px;
   transition: opacity .30s ease-in-out;
@@ -234,16 +232,65 @@ margin-top: 30px;
   display: none;
   opacity: 0;
 }
-/*
-#myColor {
-  opacity: 0;
-}
-*/
 
 .btn-invisible {
   display: none;
 }
 
-.download {
-  background-image: url("ICONS/download.png");
+.hamburger {
+  display: none;
+}
+
+@media (max-width: 778px) {
+  .canvas-container {
+    flex-direction: column;
+    padding: 10px 10px 10px 10px;
+  }
+
+  #my-canvas {
+    width: 100%;
+  }
+
+  .left-side {
+    display: block;
+  }
+
+
+  .open .left-side {
+    visibility: visible;
+    opacity: 1;
+  }
+
+
+  .hamburger {
+    display: inline-block;
+    color: white;
+    width: 50px;
+    height: 50px;
+  }
+}
+
+
+
+@media (max-width: 740px) {
+  .toggle-menu-screen {
+  }
+
+  .images {
+    display: block;
+  }
+}
+
+.open .toggle-menu-screen {
+  visibility: visible;
+  opacity: 1;
+}
+
+.toggle-menu-btn {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 1.75rem;
+  padding: 20px;
+  display: none;
 }
