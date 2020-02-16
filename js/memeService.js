@@ -37,6 +37,10 @@ function getImg(id) {
     return gImgs.find(image => image.id === parseInt(id))
 }
 
+function getImgs() {
+    return gImgs
+}
+
 function createImage(id) {
     var image = {
         id,

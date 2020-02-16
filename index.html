@@ -10,39 +10,22 @@
 </head>
 
 <body onload="onInit()">
+    <div class="screen" onclick="toggleMenu()"></div>
+
     <div class="Nav-bar-bg">
         <img class="header" src="ICONS/94BE5D4E-1A38-4B0E-AA60-FA268DB0B302.png" onclick="onHomePage()">
-        <div class="left-side">
+        <div class="main-nav">
             <h3 class="home-page" onclick="onHomePage()">Gallery</h3>
             <h3 class="saved-meme" onclick="onSaveSection()">Saved Memes</h3>
             <h3 class="about" onclick="onAbout()">About</h3>
         </div>
-        <img class="hamburger" src="ICONS/Hamburger_icon.svg.png" onclick="openHamburger()">
+        <img class="hamburger" src="ICONS/Hamburger_icon.svg.png" onclick="toggleMenu()">
     </div>
 
     <div class="images-galery grid">
-        <div class="images">
-            <img class="images-wrapper" src="meme-imgs (square)/1.jpg" alt="" id="1" onclick="imageClicked(this)">
-            <img class="images-wrapper" src="meme-imgs (square)/2.jpg" alt="" id="2" onclick="imageClicked(this)">
-            <img class="images-wrapper" src="meme-imgs (square)/3.jpg" alt="" id="3" onclick="imageClicked(this)">
-            <img class="images-wrapper" src="meme-imgs (square)/4.jpg" alt="" id="4" onclick="imageClicked(this)">
-            <img class="images-wrapper" src="meme-imgs (square)/5.jpg" alt="" id="5" onclick="imageClicked(this)">
-            <img class="images-wrapper" src="meme-imgs (square)/6.jpg" alt="" id="6" onclick="imageClicked(this)">
-            <img class="images-wrapper" src="meme-imgs (square)/7.jpg" alt="" id="7" onclick="imageClicked(this)">
-            <img class="images-wrapper" src="meme-imgs (square)/8.jpg" alt="" id="8" onclick="imageClicked(this)">
-            <img class="images-wrapper" src="meme-imgs (square)/9.jpg" alt="" id="9" onclick="imageClicked(this)">
-            <img class="images-wrapper" src="meme-imgs (square)/10.jpg" alt="" id="10" onclick="imageClicked(this)">
-            <img class="images-wrapper" src="meme-imgs (square)/11.jpg" alt="" id="11" onclick="imageClicked(this)">
-            <img class="images-wrapper" src="meme-imgs (square)/12.jpg" alt="" id="12" onclick="imageClicked(this)">
-            <img class="images-wrapper" src="meme-imgs (square)/13.jpg" alt="" id="13" onclick="imageClicked(this)">
-            <img class="images-wrapper" src="meme-imgs (square)/14.jpg" alt="" id="14" onclick="imageClicked(this)">
-            <img class="images-wrapper" src="meme-imgs (square)/15.jpg" alt="" id="15" onclick="imageClicked(this)">
-            <img class="images-wrapper" src="meme-imgs (square)/16.jpg" alt="" id="16" onclick="imageClicked(this)">
-            <img class="images-wrapper" src="meme-imgs (square)/17.jpg" alt="" id="17" onclick="imageClicked(this)">
-            <img class="images-wrapper" src="meme-imgs (square)/18.jpg" alt="" id="18" onclick="imageClicked(this)">
+        <div class="images-continer">
         </div>
         <div class='saved-section hide'>
-            meep
                     </div>
     </div>
 
@@ -54,7 +37,8 @@
             <h2>Shaked Katsir</h2>
             <p>
                 Hello! my name is shaked this is my meme maker,I'm 21 years old
-                from TLV. <br>
+                from TLV. </p>
+                <p>
                 I like coding very much, JS & CSS & HTML</p>
 
             <div class="social-btns">
@@ -68,43 +52,54 @@
         <canvas id="my-canvas" height="450" width="450" style="border: 1px solid black;">
         </canvas>
 
-        <div class="controler flex">
+        <div class="controler">
             <div class="meme-text">
                 <input type="text" class="memeTxt" id="memeTxt" placeholder="please enter some text"
                     oninput="onSaveText()" onfocus=onFocus(this)>
             </div>
 
-            <div class="controler-buttons">
-                <button class="font-btn">
-                    <img src="ICONS/increase font - icon.png" alt="" onclick="changeFont('increase')">
+            <div class="controler-buttons flex">
+                <button class="font-btn switch">
+                    <img src="ICONS/up-and-down-opposite-double-arrows-side-by-side.png" onclick="switchLine()">
+                </button>
+              
+                <button class="font-btn left-align" onclick="leftAlign()">
+                    <img src="ICONS/align-to-left.png" onclick="">
                 </button>
 
-                <button class="font-btn">
-                    <img src="ICONS/decrease font - icon.png" alt="" onclick="changeFont('decrease')">
+                <button class="font-btn center-align" onclick="centerAlign()">
+                    <img src="ICONS/center-text-alignment.png" onclick="">
                 </button>
 
-                <button class="font-btn">
+                <button class="font-btn right-align" onclick="rightAlign()">
+                    <img src="ICONS/align-to-right.png" onclick="">
+                </button>
+
+                <button class="font-btn font-increase">
+                    <img src="ICONS/increase font - icon.png" alt="" onclick="changeFontSize('increase')">
+                </button>
+
+                <button class="font-btn font-decrease">
+                    <img src="ICONS/decrease font - icon.png" alt="" onclick="changeFontSize('decrease')">
+                </button>
+
+                <button class="font-btn up-btn">
                     <img src="ICONS\up.png" onclick="upBtn()">
                 </button>
 
-                <button class="font-btn">
+                <button class="font-btn down-btn">
                     <img src="ICONS/downbtn.png" onclick="downBtn()">
                 </button>
 
-                <button class="font-btn">
-                    <img src="ICONS/up-and-down-opposite-double-arrows-side-by-side.png" onclick="switchLine()">
-                </button>
-
-                <button class="font-btn">
+                <button class="font-btn change-font">
                     <img src="ICONS/text stroke.png" onclick="onChangeFont()">
                 </button>
 
-                <span class="opener" onclick="openColorPicker()">
-                    <button class="font-btn">
-                        <img class="textColor" src="ICONS/paint-board-and-brush.png">
-                    </button>
-                </span>
-                <input type="color" class="btn-invisible textColor" onchange="changeColor()" />
+                <input type="color" id="head" value="#ffffff" name="head" class="btn-invisible" onchange="changeColor()">
+                <label for="head" class="font-btn"> 
+                    <img class="text-color" src="ICONS/paint-board-and-brush.png">
+                </label>
+            </input>
 
                 <button class="font-btn">
                     <img src="ICONS/save.png" onclick="onSaveMeme()">
@@ -116,7 +111,7 @@
 
                 <a href="#" class="download" onclick="downloadCanvas(this)" download="my-img.jpg"></a>
                 <div class="share-container"></div>
-                <form action="" method="POST" enctype="multipart/form-data" onsubmit="uploadImg(this, event)">
+                <form class="share-btn" action="" method="POST" enctype="multipart/form-data" onsubmit="uploadImg(this, event)">
                   <input name="img" id="imgData" type="hidden" />
                   <button class="share" type="submit">Publish</button>
                   <div class="share-container"></div>

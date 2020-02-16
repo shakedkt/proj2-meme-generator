@@ -2,11 +2,25 @@
 
 var gCanvas;
 var gCtx;
+var memeImageCounter = 18
+
 
 function onInit() {
     gCanvas = document.getElementById('my-canvas')
     gCtx = gCanvas.getContext('2d')
+    renderImages()
 }
+
+function renderImages() {
+    var images = getImgs()
+    var strHtml = ''
+    for (var i = 1; i <= images.length; i++) {
+        strHtml += `<img class="images-wrapper" src="meme-imgs (square)/${i}.jpg" alt="" id="${i}" onclick="imageClicked(this)">`
+    }
+    var imageContiner = document.querySelector('.images-continer')
+    imageContiner.innerHTML = strHtml
+}
+
 
 function drawImg(image) {
     var img = new Image()
@@ -30,15 +44,17 @@ function drawText() {
     meme.lines.forEach(line => {
         gCtx.font = `${line.size}px impact`
         gCtx.strokeStyle = 'black';
+        gCtx.textAlign = `${line.align}`
         gCtx.strokeText(line.txt, line.x, line.y)
         gCtx.fillStyle = `${line.color}`
-        gCtx.textAlign = `${line.align}`
         gCtx.fillText(line.txt, line.x, line.y)
+        
     });
+
 }
 
 function imageClicked(Image) {
-    var gallery = document.querySelector('.images')
+    var gallery = document.querySelector('.images-continer')
     if (!gallery.className.includes('hide')) {
         gallery.classList.toggle('hide');
     }
@@ -46,7 +62,6 @@ function imageClicked(Image) {
     if (canvas.className.includes('hide')) {
         canvas.classList.toggle('hide');
     }
-
     var aboutMe = document.querySelector('.about-me')
     if (!aboutMe.className.includes('hide')) {
         aboutMe.classList.toggle('hide')
@@ -61,7 +76,7 @@ function imageClicked(Image) {
 }
 
 function onHomePage() {
-    var gallery = document.querySelector('.images')
+    var gallery = document.querySelector('.images-continer')
     if (gallery.className.includes('hide')) {
         gallery.classList.toggle('hide');
 
@@ -78,13 +93,13 @@ function onHomePage() {
     document.querySelector('.memeTxt').input = ''
 }
 
-function changeFont(direction) {
+function changeFontSize(direction) {
     var meme = getMeme()
     var currLine = meme.lines[meme.selectedLineIdx]
-
     if (direction === 'increase') currLine.size += 10
-    else currLine.size -= 10
-
+    else if (currLine.size > 10) {
+        currLine.size -= 10
+    }
     drawImg(getImg(meme.selectedImgId))
 }
 
@@ -132,35 +147,31 @@ function openModal() {
     }, 3000);
 }
 
-
 function onSaveSection() {
     var canvas = document.querySelector('.canvas-container')
     if (!canvas.className.includes('hide')) {
         canvas.classList.add('hide')
     }
-    var images = document.querySelector('.images')
+    var images = document.querySelector('.images-continer')
     if (!images.className.includes('hide')) {
         images.classList.add('hide');
     }
-var savedSection = document.querySelector('.saved-section')
-    if(savedSection.className.includes('hide')) {
+    var savedSection = document.querySelector('.saved-section')
+    if (savedSection.className.includes('hide')) {
         savedSection.classList.toggle('hide')
     }
     renderSavedMemes()
 }
 
-function changeColor() {
+function changeColor(elLabel) {
+    console.log(elLabel);
+    
     var textColor = document.querySelector('.btn-invisible').value
+    console.log(textColor);
+    
     var meme = getMeme()
     getCurrLine().color = textColor
     drawImg(getImg(meme.selectedImgId))
-}
-
-function openColorPicker() {
-    document.querySelector('span.opener')
-        .addEventListener('click',
-            e => document.querySelector('.btn-invisible').click()
-        );
 }
 
 function openDownLoad() {
@@ -173,34 +184,58 @@ function downloadCanvas(elLink) {
     elLink.download = 'jpg'
 }
 
-
-function openHamburger() {
-    var leftSide = document.querySelector('.left-side')
-    leftSide.classList.toggle('flex');
+function toggleMenu() {
     document.body.classList.toggle('menu-open');
-    document.body.addEventListener("click", closeMenu, {capture: true});
 }
 
-function closeMenu() {
-    var leftSide = document.querySelector('.left-side')
-    if (document.body.className.includes('menu-open')) {
-        leftSide.classList.toggle('hide');
-        document.body.removeEventListener("click", closeMenu);
+function onImgInput(ev) {
+
+    loadImageFromInput(ev, renderCanvas)
+}
+function loadImageFromInput(ev, onImageReady) {
+    document.querySelector('.share-container').innerHTML = ''
+    var reader = new FileReader();
+
+    reader.onload = function (event) {
+        var img = new Image();
+        img.onload = onImageReady.bind(null, img)
+        img.src = event.target.result;
     }
+    reader.readAsDataURL(ev.target.files[0]);
+}
+
+function leftAlign() {
+    var meme = getMeme()
+    getCurrLine().align = 'left'
+    drawImg(getImg(meme.selectedImgId))
+}
+
+function centerAlign() {
+    var meme = getMeme()
+    getCurrLine().align = 'center'
+    drawImg(getImg(meme.selectedImgId))
+}
+
+function rightAlign() {
+    var meme = getMeme()
+    getCurrLine().align = 'right'
+    drawImg(getImg(meme.selectedImgId))
+}
+
+function drawRect(x, y) {
+    gCtx.beginPath()
+    gCtx.rect(x, y, 150, 150)
+    gCtx.strokeStyle = 'black'
+    gCtx.stroke()
+    gCtx.fillStyle = 'orange'
+    gCtx.fillRect(x, y, 150, 150)
 }
 
 
 function renderSavedMemes() {
-var strHtml = ''
-var memeCount = 0
+    var strHtml = ''
+    var memeCount = 0
 
-var memeList = loadFromStorage('meme-0')
-
-
-/*
-<img class="images-wrapper" src="meme-imgs (square)/1.jpg" alt="" id="1" onclick="imageClicked(this)">
-*/
-
-var savedContiner = document.querySelector('.saved-section')
-savedContiner.innerHTML = strHtml
+    var savedContiner = document.querySelector('.saved-section')
+    savedContiner.innerHTML = strHtml
 }
